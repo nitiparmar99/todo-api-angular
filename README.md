@@ -1,6 +1,6 @@
 # todo-api-angular
 
-A lightweight Angular application that provides a simple user interface for the TODO API. It allows you to create, view, update, and delete TODO items by communicating with the ASP.NET Core backend.
+A lightweight Angular application that provides a simple user interface for the TODO API. It allows you to create, view, and delete TODO items by communicating with the ASP.NET Core backend.
 
 ## Prerequisites
 
