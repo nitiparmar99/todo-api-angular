@@ -1,0 +1,156 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+.app-shell {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  padding: 16px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.todo-item > div:first-child {
+  flex: 1;
+}
+
+.todo-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.todo-item input[type="checkbox"] {
+  width: auto;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item h3 {
+  margin: 0 0 4px;
+}
+
+.todo-item .description {
+  margin: 8px 0 4px 0;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.todo-item .meta {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.todo-item.completed h3,
+.todo-item.completed .description {
+  text-decoration: line-through;
+  color: #777;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.editor-toolbar {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.toolbar-btn {
+  padding: 6px 10px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 32px;
+  transition: background 0.2s;
+}
+
+.toolbar-btn:hover {
+  background: #e0e0e0;
+}
+
+.toolbar-select {
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.description-editor {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 100px;
+  background: white;
+  margin-top: 4px;
+  outline: none;
+  word-wrap: break-word;
+}
+
+.description-editor:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
+}
+
+button {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: #1976d2;
+  color: white;
+  padding: 10px 14px;
+}
+
+button.secondary {
+  background: transparent;
+  color: #1976d2;
+  border-color: #1976d2;
+}
+
+button.delete {
+  background: #d32f2f;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
