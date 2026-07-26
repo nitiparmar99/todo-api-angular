@@ -1,12 +1,19 @@
 # todo-api-angular
 
-Small Angular frontend for the TODO API.
+A lightweight Angular application that provides a simple user interface for the TODO API. It allows you to create, view, update, and delete TODO items by communicating with the ASP.NET Core backend.
 
-Prerequisites
-- Node.js 20+ and npm.
-- Angular CLI 16 is optional if available.
+## Prerequisites
 
-Run
+Before running the application, make sure you have:
+
+* Node.js 20 or later
+* npm (included with Node.js)
+
+> **Optional:** Angular CLI 16 can be installed globally if you prefer using Angular CLI commands, but it isn't required.
+
+## Getting Started
+
+From the project directory, run:
 
 ```bash
 cd todo-api-angular
@@ -14,76 +21,73 @@ npm install
 npm start
 ```
 
-The app will serve on `http://localhost:4200` by default.
+The application will be available at:
 
-Run order
-- Start `todo-api-dotnetcore` first.
-- Then run this frontend so it can call `http://localhost:5000/api`.
+```text
+http://localhost:4200
+```
 
-API
-- The frontend calls the backend at `http://localhost:5000/api`.
-- If you need to point it somewhere else, update `src/environments/environment.ts` and `src/environments/environment.prod.ts`.
+## Running with the Backend
 
-Tests
+This frontend depends on the ASP.NET Core API.
+
+1. Start the **todo-api-dotnetcore** project first.
+2. Once the backend is running, start this Angular application.
+
+By default, the frontend communicates with:
+
+```text
+http://localhost:5000/api
+```
+
+If your backend is running on a different URL or port, update the API endpoint in:
+
+* `src/environments/environment.ts`
+* `src/environments/environment.prod.ts`
+
+## Running Tests
+
+Execute the unit tests with:
 
 ```bash
 npm test
 ```
 
-## Architecture
+## Application Architecture
 
 ```mermaid
-graph TB
-    subgraph Browser["🌐 Browser (localhost:4200)"]
-        AC["AppComponent<br/>(Root)"]
-        TF["TodoFormComponent<br/>(Add todos)"]
-        TL["TodoListComponent<br/>(Display todos)"]
-        
-        AC -->|imports| TF
-        AC -->|imports| TL
+flowchart LR
+
+    Browser["Browser"]
+
+    subgraph Frontend
+        Angular["Angular API"]
     end
-    
-    subgraph Services["📦 Services"]
-        TS["TodoService<br/>(HTTP calls)"]
-        
-        TF -->|uses| TS
-        AC -->|uses| TS
+
+    subgraph Backend
+        API["ASP.NET Core API"]
+        Memory[("In-Memory Store")]
     end
-    
-    subgraph Network["🔗 HTTP (localhost:5000/api)"]
-        API["REST API<br/>Endpoints"]
-    end
-    
-    subgraph Backend[".NET Core Backend"]
-        TC["TodosController<br/>(GET, POST, DELETE)"]
-        SVC["TodoService<br/>(Business logic)"]
-        DTO["DTOs<br/>(CreateTodoDto, TodoDto)"]
-        MODEL["TodoItem Model<br/>(In-memory storage)"]
-        
-        TC -->|uses| SVC
-        SVC -->|uses| MODEL
-        TC -->|maps| DTO
-    end
-    
-    TS -->|calls| API
-    API -->|handled by| TC
-    TC -->|returns| DTO
-    DTO -->|received as| MODEL
-    
-    style Browser fill:#e1f5ff
-    style Services fill:#f3e5f5
-    style Network fill:#fff3e0
-    style Backend fill:#e8f5e9
+
+    Browser --> Angular
+    Angular <-->|REST / JSON| API
+    API <--> Memory
 ```
+
+
+
 
 ## Features
 
-- **Rich Text Editor** - Format descriptions with bold, italic, underline, and font size options
-- **Responsive UI** - Clean card-based interface with proper alignment
-- **Component-based** - Modular Angular standalone components
-- **RESTful API** - Stateless backend with CRUD operations
-- **Real-time Sync** - Changes instantly reflect between frontend and backend
+* Create, view, and delete TODO items through a clean and responsive interface.
+* Rich text editor for formatting task descriptions (bold, italic, underline, and font size).
+* Built using Angular standalone components for a modular architecture.
+* Communicates with the backend through REST APIs.
+* Changes are reflected immediately after each successful API request.
 
-Notes
-- The backend must be running separately on port `5000`.
-- Data is stored in-memory on the backend, so restarting the API clears the todo list.
+## Notes
+
+* The backend API must be running separately on **[http://localhost:5000](http://localhost:5000)**.
+* The backend uses an in-memory data store, so all TODO items are cleared whenever the API is restarted.
+
+
